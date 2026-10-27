@@ -1,0 +1,42 @@
+# =========================================
+# 1. Betriebssystem-Dateien (Müll, den OS erzeugt)
+# =========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =========================================
+# 2. IDEs & Editoren (z.B. VS Code, DataGrip, DBeaver)
+# =========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =========================================
+# 3. Datenbank-Zugangsdaten & Secrets (SEHR WICHTIG!)
+# =========================================
+# Verhindert, dass Passwörter oder Verbindungs-URLs versehentlich hochgeladen werden
+.env
+config.json
+
+# =========================================
+# 4. Lokale Datenbanken & Backups/Dumps
+# =========================================
+# Deine echten SQL-Skripte (CREATE TABLE etc.) willst du behalten, 
+# aber große lokale Datenbank-Dateien oder Backups sollen draußen bleiben:
+*.db
+*.sqlite
+*.sqlite3
+*backup*.sql
+*dump*.sql
+
+# =========================================
+# 5. Log-Dateien
+# =========================================
+*.log
