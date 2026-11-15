@@ -134,11 +134,13 @@ CREATE TABLE IF NOT EXISTS Anfrage (
     benutzer_id INTEGER NOT NULL,
     abholort_id INTEGER NOT NULL,
     erstelldatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(15) DEFAULT "offen",
+    status VARCHAR(15) DEFAULT 'offen',
 
     CONSTRAINT fk_anfrage_exemplar FOREIGN KEY (exemplar_id) REFERENCES Exemplar (exemplar_id),
     CONSTRAINT fk_anfrage_benutzer FOREIGN KEY (benutzer_id) REFERENCES Benutzer (benutzer_id),
-    CONSTRAINT fk_anfrage_abholort FOREIGN KEY (abholort_id) REFERENCES Exemplar (abholort_id),
+    CONSTRAINT fk_anfrage_abholort FOREIGN KEY (abholort_id) REFERENCES Abholort (abholort_id),
 
     PRIMARY KEY (anfrage_id)
-)
+);
+
+
