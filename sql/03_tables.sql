@@ -156,3 +156,17 @@ CREATE TABLE IF NOT EXISTS Bewertung (
 
     PRIMARY KEY (ausleihe_id, bewerter_id)
 );
+
+CREATE TABLE IF NOT EXISTS Nachricht (
+    nachricht_id INTEGER,
+    sender_id INTEGER NOT NULL,
+    empfaenger_id INTEGER NOT NULL,
+    inhalt TEXT NOT NULL,
+    zeitstempel TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    anfrage_id INTEGER,
+
+    CONSTRAINT fk_nachricht_sender FOREIGN KEY (sender_id) REFERENCES Benutzer (benutzer_id),
+    CONSTRAINT fk_nachricht_empfaenger FOREIGN KEY (empfaenger_id) REFERENCES Benutzer (benutzer_id),
+
+    PRIMARY KEY (nachricht_id)
+);
