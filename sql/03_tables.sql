@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS Buch_Autor (
 CREATE TABLE IF NOT EXISTS Abholort (
     abholort_id INTEGER,
     bezeichnung VARCHAR(255),
-    strasse VARCHAR(255) NOT NULL
+    strasse VARCHAR(255) NOT NULL,
     hausnr VARCHAR(10) NOT NULL,
     plz CHAR(5) NOT NULL,
     stadt VARCHAR(255) NOT NULL,
@@ -61,6 +61,23 @@ CREATE TABLE IF NOT EXISTS Abholort (
     longitude FLOAT NOT NULL,
 
     PRIMARY KEY (abholort_id)
+);
+
+CREATE TABLE IF NOT EXISTS Benutzer (
+    benutzer_id INTEGER,
+    vorname VARCHAR(30) NOT NULL,
+    nachname VARCHAR(50) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    telefon VARCHAR(20) NOT NULL,
+    strasse VARCHAR(255) NOT NULL,
+    hausnr VARCHAR(10) NOT NULL,
+    plz CHAR(5) NOT NULL,
+    stadt VARCHAR(255) NOT NULL,
+    latitude FLOAT NOT NULL,
+    longitude FLOAT NOT NULL,
+
+    PRIMARY KEY (benutzer_id),
+    UNIQUE(email)
 )
 
 
