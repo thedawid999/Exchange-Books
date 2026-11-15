@@ -86,3 +86,17 @@ CREATE TABLE IF NOT EXISTS Benutzer (
     UNIQUE(email)
 );
 
+CREATE TABLE IF NOT EXISTS Exemplar (
+    exemplar_id INTEGER,
+    buch_id INTEGER NOT NULL,
+    besitzer_id INTEGER NOT NULL,
+    abholort_id INTEGER NOT NULL,
+    beschreibung VARCHAR(255),
+    ausleihdauer INTERVAL NOT NULL,
+
+    CONSTRAINT fk_exemplar_buch FOREIGN KEY (buch_id) REFERENCES Buch (buch_id),
+    CONSTRAINT fk_exemplar_besitzer FOREIGN KEY (besitzer_id) REFERENCES Benutzer (benutzer_id),
+    CONSTRAINT fk_exemplar_abholort FOREIGN KEY (abholort_id) REFERENCES Abholort (abholort_id),
+
+    PRIMARY KEY (exemplar_id)
+)
