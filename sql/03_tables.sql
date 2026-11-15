@@ -170,3 +170,7 @@ CREATE TABLE IF NOT EXISTS Nachricht (
 
     PRIMARY KEY (nachricht_id)
 );
+
+CREATE UNIQUE INDEX idx_nur_eine_aktive_ausleihe
+    ON Ausleihe (exemplar_id)
+    WHERE tatsaechliches_rueckgabedatum IS NULL;
