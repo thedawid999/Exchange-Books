@@ -99,4 +99,14 @@ CREATE TABLE IF NOT EXISTS Exemplar (
     CONSTRAINT fk_exemplar_abholort FOREIGN KEY (abholort_id) REFERENCES Abholort (abholort_id),
 
     PRIMARY KEY (exemplar_id)
-)
+);
+
+CREATE TABLE IF NOT EXISTS Wunschliste (
+    benutzer_id INTEGER NOT NULL,
+    buch_id INTEGER NOT NULL,
+
+    CONSTRAINT fk_wunschliste_benutzer FOREIGN KEY (benutzer_id) REFERENCES Benutzer (benutzer_id),
+    CONSTRAINT fk_wunschliste_buch FOREIGN KEY (buch_id) REFERENCES Buch (buch_id),
+
+    PRIMARY KEY (benutzer_id, buch_id)
+);
