@@ -110,3 +110,20 @@ CREATE TABLE IF NOT EXISTS Wunschliste (
 
     PRIMARY KEY (benutzer_id, buch_id)
 );
+
+CREATE TABLE IF NOT EXISTS Ausleihe (
+    ausleihe_id INTEGER,
+    exemplar_id INTEGER NOT NULL,
+    entleiher_id INTEGER NOT NULL,
+    abholort_id INTEGER NOT NULL,
+    ausleihbeginn DATE NOT NULL,
+    vereinbartes_rueckgabedatum DATE NOT NULL,
+    tatsaechliches_rueckgabedatum DATE,
+
+    CONSTRAINT fk_ausleihe_exemplar FOREIGN KEY (exemplar_id) REFERENCES Exemplar (exemplar_id),
+    CONSTRAINT fk_ausleihe_entleiher FOREIGN KEY (entleiher_id) REFERENCES Benutzer (benutzer_id),
+    CONSTRAINT fk_ausleihe_abholort FOREIGN KEY (abholort_id) REFERENCES Abholort (abholort_id),
+    CONSTRAINT check_ausleihbeginn_vor_rueckgabe CHECK (ausleihbeginn < vereinbartes_rueckgabedatum),
+
+    PRIMARY KEY (ausleihe_id)
+);
