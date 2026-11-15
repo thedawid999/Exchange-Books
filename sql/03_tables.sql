@@ -41,7 +41,17 @@ CREATE TABLE IF NOT EXISTS Sprache (
 
 
 -- FREMDSCHLÜSSELVERGABE --
-ALTER TABLE Buch
-ADD CONSTRAINT fk_buch_verlag FOREIGN KEY (verlag_id) REFERENCES Verlag (verlag_id),
-ADD CONSTRAINT fk_buch_genre FOREIGN KEY (genre_id) REFERENCES Genre (genre_id),
-ADD CONSTRAINT fk_buch_sprache FOREIGN KEY (sprache_id) REFERENCES Sprache (sprache_id);
+ALTER TABLE Buch DROP CONSTRAINT IF EXISTS fk_buch_verlag;
+ALTER TABLE Buch ADD CONSTRAINT fk_buch_verlag 
+    FOREIGN KEY (verlag_id) REFERENCES Verlag (verlag_id)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE Buch DROP CONSTRAINT IF EXISTS fk_buch_genre;
+ALTER TABLE Buch ADD CONSTRAINT fk_buch_genre
+    FOREIGN KEY (genre_id) REFERENCES Genre (genre_id)
+    ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE Buch DROP CONSTRAINT IF EXISTS fk_buch_sprache;
+ALTER TABLE Buch ADD CONSTRAINT fk_buch_sprache
+    FOREIGN KEY (sprache_id) REFERENCES Sprache (sprache_id)
+    ON DELETE CASCADE ON UPDATE CASCADE;
