@@ -1,35 +1,35 @@
 -- TABELLENDEFINITIONEN --
 CREATE TABLE IF NOT EXISTS Buch (
     buch_id INTEGER,
-    genre_id INTEGER,
-    verlag_id INTEGER,
-    sprache_id INTEGER,
-    titel VARCHAR(255),
+    genre_id INTEGER NOT NULL,
+    verlag_id INTEGER NOT NULL,
+    sprache_id INTEGER NOT NULL,
+    titel VARCHAR(255) NOT NULL,
     erscheinungsjahr DATE,
-    isbn VARCHAR(17),
+    isbn VARCHAR(17) NOT NULL,
 
     PRIMARY KEY (buch_id)
 );
 
 CREATE TABLE IF NOT EXISTS Verlag (
     verlag_id INTEGER,
-    verlagsname VARCHAR(255),
-    sitz VARCHAR(255),
+    verlagsname VARCHAR(255) NOT NULL,
+    sitz VARCHAR(255) NOT NULL,
 
     PRIMARY KEY (verlag_id)
 );
 
 CREATE TABLE IF NOT EXISTS Genre (
     genre_id INTEGER,
-    name VARCHAR(64),
+    name VARCHAR(64) NOT NULL,
 
     PRIMARY KEY (genre_id)
 );
 
 CREATE TABLE IF NOT EXISTS Sprache (
     sprache_id INTEGER,
-    bezeichnung VARCHAR(30),
-    sprachcode VARCHAR(3),
+    bezeichnung VARCHAR(30) NOT NULL,
+    sprachcode VARCHAR(3) NOT NULL,
 
     PRIMARY KEY (sprache_id),
     UNIQUE (sprachcode)
@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS Sprache (
 
 CREATE TABLE IF NOT EXISTS Autor (
     autor_id INTEGER,
-    vorname VARCHAR(30),
-    nachname VARCHAR(50),
+    vorname VARCHAR(30) NOT NULL,
+    nachname VARCHAR(50) NOT NULL,
 
     PRIMARY KEY (autor_id)
 );
