@@ -50,6 +50,18 @@ CREATE TABLE IF NOT EXISTS Buch_Autor (
     PRIMARY KEY (buch_id, autor_id)
 );
 
+CREATE TABLE IF NOT EXISTS Abholort (
+    abholort_id INTEGER,
+    bezeichnung VARCHAR(255),
+    strasse VARCHAR(255) NOT NULL
+    hausnr VARCHAR(10) NOT NULL,
+    plz CHAR(5) NOT NULL,
+    stadt VARCHAR(255) NOT NULL,
+    latitude FLOAT NOT NULL,
+    longitude FLOAT NOT NULL,
+
+    PRIMARY KEY (abholort_id)
+)
 
 
 
