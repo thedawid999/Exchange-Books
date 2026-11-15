@@ -143,4 +143,16 @@ CREATE TABLE IF NOT EXISTS Anfrage (
     PRIMARY KEY (anfrage_id)
 );
 
+CREATE TABLE IF NOT EXISTS Bewertung (
+    ausleihe_id INTEGER NOT NULL,
+    bewerter_id INTEGER NOT NULL,
+    sterne INTEGER NOT NULL,
+    kommentar TEXT,
+    datum DATE DEFAULT NOW(),
 
+    CONSTRAINT fk_bewertung_ausleihe FOREIGN KEY (ausleihe_id) REFERENCES Ausleihe (ausleihe_id),
+    CONSTRAINT fk_bewertung_bewerter FOREIGN KEY (bewerter_id) REFERENCES Benutzer (benutzer_id),
+    CONSTRAINT check_sterne_bereich CHECK (sterne BETWEEN 1 AND 5),
+
+    PRIMARY KEY (ausleihe_id, bewerter_id)
+);
