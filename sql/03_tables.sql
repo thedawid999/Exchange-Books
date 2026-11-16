@@ -147,7 +147,7 @@ CREATE TABLE IF NOT EXISTS Bewertung (
     ausleihe_id INTEGER NOT NULL,
     bewerter_id INTEGER NOT NULL,
     sterne INTEGER NOT NULL,
-    kommentar TEXT,
+    kommentar TEXT DEFAULT '',
     datum DATE DEFAULT NOW(),
 
     CONSTRAINT fk_bewertung_ausleihe FOREIGN KEY (ausleihe_id) REFERENCES Ausleihe (ausleihe_id),
@@ -171,6 +171,6 @@ CREATE TABLE IF NOT EXISTS Nachricht (
     PRIMARY KEY (nachricht_id)
 );
 
-CREATE UNIQUE INDEX idx_nur_eine_aktive_ausleihe
+CREATE UNIQUE INDEX IF NOT EXISTS idx_nur_eine_aktive_ausleihe
     ON Ausleihe (exemplar_id)
     WHERE tatsaechliches_rueckgabedatum IS NULL;
