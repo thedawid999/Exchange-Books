@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS Anfrage (
     anfrage_id INTEGER,
     exemplar_id INTEGER NOT NULL,
     benutzer_id INTEGER NOT NULL,
-    abholort_id INTEGER NOT NULL,
+    abholort_id INTEGER,
     erstelldatum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(15) DEFAULT 'offen',
 
